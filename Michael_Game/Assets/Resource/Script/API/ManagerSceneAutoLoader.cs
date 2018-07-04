@@ -19,7 +19,7 @@ public class ManagerSceneAutoLoader
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void LoadManagerScene()
     {
-        string managerSceneName = "ManagerScene";
+        string managerSceneName = "Initialize";
 
         // ManagerSceneが有効でない時(まだ読み込んでいない時)だけ追加ロードするように 
         if (!SceneManager.GetSceneByName(managerSceneName).IsValid())
