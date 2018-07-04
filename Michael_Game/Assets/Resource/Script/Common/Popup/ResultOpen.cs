@@ -22,20 +22,4 @@ public class ResultOpen : BaseObject {
         isCallOnse = false;
     }
 
-	public void Update()
-    {
-        if (!isCallOnse)
-        {
-            if (Singleton<GameInstance>.instance.IsGoal == true)
-            {
-
-                Singleton<GameInstance>.instance.IsGoal = false;
-
-                PopupResult result = resultPopup.GetComponent<PopupResult>();
-                result.Open();
-                isCallOnse = true;
-
-            }
-        }
-    }
 }

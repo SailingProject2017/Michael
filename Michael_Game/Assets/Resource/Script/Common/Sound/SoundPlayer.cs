@@ -77,7 +77,6 @@ public class SoundPlayer{
         }
 
         //ボリュームの設定
-        audioSource.volume = BaseObjectSingleton<GameInstance>.Instance.MaxSEVolume;
         audioSource.loop = false;
         //再生
         audioSource.PlayOneShot(info.clip);

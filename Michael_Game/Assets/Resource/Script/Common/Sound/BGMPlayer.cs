@@ -215,7 +215,6 @@ class BGMPlayer{
     public void PlayBGM(float fadeTime, bool toLoop) {
         if(source != null) {
             this.fadeInTime = fadeTime;
-            this.maxBGMVolume = BaseObjectSingleton<GameInstance>.Instance.MaxBGMVolume;
             source.volume = this.maxBGMVolume;
             source.loop = toLoop;
             state.PlayBGM();
