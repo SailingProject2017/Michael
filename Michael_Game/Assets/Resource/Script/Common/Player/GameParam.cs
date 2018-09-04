@@ -7,9 +7,17 @@ public class GameParam {
 
     private int _depth;
 
+    private int _enemyDepth;
+
     public int Depth
     {
-        set;
-        get;
+        set { _depth = value; }
+        get { return _depth; }
+    }
+
+    public int EnemyDepth
+    {
+        set { _enemyDepth = value; }
+        get { return _enemyDepth; }
     }
 }
