@@ -14,6 +14,7 @@ public class GameInstance : BaseObjectSingleton<GameInstance>
     /* inGame関連 */
     
     private bool isPorse;      // @brief ポーズ中かどうか判別する変数
+    private bool isPlayGame;   // @brief mainゲームを遊んでいるかどうかを判別
     
 
     protected override void AppendListConstructor()
@@ -21,6 +22,7 @@ public class GameInstance : BaseObjectSingleton<GameInstance>
         base.AppendListConstructor();
     
         isPorse = false;
+        isPlayGame = false;
      
     }
 
@@ -36,5 +38,18 @@ public class GameInstance : BaseObjectSingleton<GameInstance>
         get { return isPorse; }
     }
     #endregion
-    
+
+    #region ゲーム判定
+    /********************************************************************************************/
+
+    /// <summary>
+    /// @brief isPlayGameの変数アクセサー
+    /// </summary>
+    public bool IsPlayGame
+    {
+        set { isPlayGame = value; }
+        get { return isPlayGame; }
+    }
+    #endregion
+
 }

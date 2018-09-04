@@ -58,13 +58,12 @@
      <Compile Include="Assets\Resource\Script\API\GameInstance.cs" />
      <Compile Include="Assets\Resource\Script\API\ManagerSceneAutoLoader.cs" />
      <Compile Include="Assets\Resource\Script\API\Singleton.cs" />
-     <Compile Include="Assets\Resource\Script\Common\Popup\PopUpBackground.cs" />
-     <Compile Include="Assets\Resource\Script\Common\Popup\PopupBase.cs" />
-     <Compile Include="Assets\Resource\Script\Common\Popup\PopupButton.cs" />
-     <Compile Include="Assets\Resource\Script\Common\Popup\PopupEnum.cs" />
-     <Compile Include="Assets\Resource\Script\Common\Popup\PopupInGame.cs" />
-     <Compile Include="Assets\Resource\Script\Common\Popup\PopupResult.cs" />
-     <Compile Include="Assets\Resource\Script\Common\Popup\ResultOpen.cs" />
+     <Compile Include="Assets\Resource\Script\Common\Command\CommandInput.cs" />
+     <Compile Include="Assets\Resource\Script\Common\Manager\CommandController.cs" />
+     <Compile Include="Assets\Resource\Script\Common\Manager\FadeManager.cs" />
+     <Compile Include="Assets\Resource\Script\Common\Manager\SceneManager.cs" />
+     <Compile Include="Assets\Resource\Script\Common\Player\PlayerMove.cs" />
+     <Compile Include="Assets\Resource\Script\Common\Scene\NextScene.cs" />
      <Compile Include="Assets\Resource\Script\Common\Sound\BGMPlayer.cs" />
      <Compile Include="Assets\Resource\Script\Common\Sound\InGameSound.cs" />
      <Compile Include="Assets\Resource\Script\Common\Sound\ModeSelectSound.cs" />
@@ -72,6 +71,16 @@
      <Compile Include="Assets\Resource\Script\Common\Sound\SoundPlayer.cs" />
      <Compile Include="Assets\Resource\Script\Common\Sound\TitleSound.cs" />
      <Compile Include="Assets\Resource\Script\Common\Sound\TutorialSound.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\BagScreen.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Command\CreateCommand.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\CountDown.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Popup\PopUpBackground.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Popup\PopupBase.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Popup\PopupButton.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Popup\PopupEnum.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Popup\PopupInGame.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Popup\PopupResult.cs" />
+     <Compile Include="Assets\Resource\Script\Common\UI\Popup\ResultOpen.cs" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity5.6.2/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
