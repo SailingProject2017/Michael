@@ -9,20 +9,28 @@ public class CommandController : BaseObject
 
     protected List<int> commandList;
 
-    protected List<string> inputButtonName;
+    protected List<string> inputButtonNameList;
+
+    protected string inputButtonName;
+
+    private int listNum;
 
     protected virtual void Start()
     {
-        commandList = new List<int>();
-        inputButtonName = new List<string>();
+        CommandInitialize();
     }
 
-    // 入力しなくてはいけないコマンドを決めるメソッド
-    public void RandomDecideCommand()
+    protected virtual void CommandInitialize()
     {
+        commandList = new List<int>();
+        inputButtonNameList = new List<string>();
 
-        // 最初に前のフェーズのコレクションをきれいにしてから
-        inputButtonName.Clear();
+        InputButtonName = "NULL";
+        listNum = 0;
+
+        // リストのデータをクリア
+        commandList.Clear();
+        inputButtonNameList.Clear();
 
         // Addするお( *´艸｀)
         for (int i = 0; i < INPUT_COMMAND_NUM; i++)
@@ -33,31 +41,55 @@ public class CommandController : BaseObject
             switch (commandList[i])
             {
                 case 0:
-                    inputButtonName.Add("A");
+                    inputButtonNameList.Add("A");
                     break;
                 case 1:
-                    inputButtonName.Add("X");
+                    inputButtonNameList.Add("X");
                     break;
                 case 2:
-                    inputButtonName.Add("Y");
+                    inputButtonNameList.Add("Y");
                     break;
                 case 3:
-                    inputButtonName.Add("B");
+                    inputButtonNameList.Add("B");
                     break;
                 case 4:
-                    inputButtonName.Add("Up");
+                    inputButtonNameList.Add("Up");
                     break;
                 case 5:
-                    inputButtonName.Add("Left");
+                    inputButtonNameList.Add("Left");
                     break;
                 case 6:
-                    inputButtonName.Add("Right");
+                    inputButtonNameList.Add("Right");
                     break;
                 case 7:
-                    inputButtonName.Add("Down");
+                    inputButtonNameList.Add("Down");
                     break;
 
             }
         }
     }
+
+    public string InputButtonName
+    {
+        set { inputButtonName = value; }
+        get { return inputButtonName; }
+    }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if(inputButtonName != "NULL")
+        {
+            if(inputButtonNameList[listNum] == InputButtonName)
+            {
+                listNum++;
+            }
+        }
+
+        // すべて入力が終わったら次のフェーズに移す
+        if (listNum == INPUT_COMMAND_NUM) CommandInitialize();
+
+    }
+
 }
