@@ -6,7 +6,7 @@ public class BagScreen : BaseObject
 {
 
     // 背景が切り替わるタイミング カメラのpositionで判断
-    private int changeBagGroundMeter = 10;
+    private float changeBagGroundMeter = 10.0f;
 
     private const int BAGGROUND_SIZE = 36;
 
