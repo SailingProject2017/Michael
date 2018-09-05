@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : CommandController
 {
-    /*
+    
     private int inputCnt;
 
     [SerializeField]
@@ -19,7 +19,7 @@ public class PlayerMove : CommandController
     {
         base.Start();
         inputCnt = 0;
-        RandomDecideCommand(); // 入力するボタンを決定する
+        //RandomDecideCommand(); // 入力するボタンを決定する
         spriteRenderer = player.GetComponent<SpriteRenderer>();
     }
 
@@ -32,8 +32,8 @@ public class PlayerMove : CommandController
         if (BaseObjectSingleton<GameInstance>.Instance.IsPlayGame)
         {
 
-            if (Input.GetButtonDown(inputButtonName[inputCnt]))
-            {
+           // if (Input.GetButtonDown(inputButtonName[inputCnt]))
+            //{
                 inputCnt++;
 
                 // 一度のフェーズのボタンが入力し終わったらもう一度入力するボタンを決定する
@@ -51,10 +51,10 @@ public class PlayerMove : CommandController
 
 
 
-                    RandomDecideCommand(); 
+                    //RandomDecideCommand(); 
                 }
-            }
+           // }
         }
     }
-    */
+
 }
