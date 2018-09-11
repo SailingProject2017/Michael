@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
- using UnityEngine.SceneManagement;
+using Scene;
 
 public class Timer : BaseObject {
  
@@ -16,6 +16,9 @@ public class Timer : BaseObject {
     //　前回Update時の秒数
     private float oldSeconds;
     private Text timerText;
+
+    [SerializeField]
+    private SCENE scene;
  
     void Start () {
         totalTime = minute * 60 + seconds;
@@ -45,7 +48,7 @@ public class Timer : BaseObject {
         oldSeconds = seconds;
         //　制限時間以下になったらコンソールに『制限時間終了』という文字列を表示する
         if(totalTime <= 0f) {
-            SceneManager.LoadScene("Result");
+            SceneManager.SceneMove(scene);
         }
     }
 }
