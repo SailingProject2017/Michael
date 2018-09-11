@@ -26,15 +26,15 @@ public class InputButton : BaseObject
             if (Input.GetButtonDown("Down")) inputButtonName = "Down";
 
             // キーボード
-            if (Input.GetKeyDown("a")) inputButtonName = "A";
-            if (Input.GetKeyDown("x")) inputButtonName = "X";
-            if (Input.GetKeyDown("y")) inputButtonName = "Y";
-            if (Input.GetKeyDown("b")) inputButtonName = "B";
+            if (Input.GetKeyDown(KeyCode.A)) inputButtonName = "A";
+            if (Input.GetKeyDown(KeyCode.X)) inputButtonName = "X";
+            if (Input.GetKeyDown(KeyCode.Y)) inputButtonName = "Y";
+            if (Input.GetKeyDown(KeyCode.B)) inputButtonName = "B";
 
-            if (Input.GetKeyDown("UpArrow")) inputButtonName = "Up";
-            if (Input.GetKeyDown("LeftArrow")) inputButtonName = "Left";
-            if (Input.GetKeyDown("RightArrow")) inputButtonName = "Right";
-            if (Input.GetKeyDown("DownArrow")) inputButtonName = "Down";
+            if (Input.GetKeyDown(KeyCode.UpArrow)) inputButtonName = "Up";
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) inputButtonName = "Left";
+            if (Input.GetKeyDown(KeyCode.RightArrow)) inputButtonName = "Right";
+            if (Input.GetKeyDown(KeyCode.DownArrow)) inputButtonName = "Down";
 
             // 入力されたボタンを代入
             BaseObjectSingleton<CommandController>.Instance.InputButtonName = inputButtonName;
