@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateCommand : CommandController {
+public class CreateCommand : BaseObject {
 
     // 生成させたいSprite
     private GameObject commandSprite;
@@ -13,25 +13,24 @@ public class CreateCommand : CommandController {
 
     [SerializeField]
     private GameObject [] commandArray;
+    private GameObject[] prefab;
 
-    protected override void CommandInitialize()
+    private void Start()
     {
-        base.CommandInitialize();
-
-        commandArray = new GameObject[7];
+        prefab = new GameObject[4];
     }
-
+    
     // コマンドを生成する
-    public void NewCommand()
+    private void NewCommand()
     {
-
         // 生成場所初期化
         var newPos = this.transform.position;
-        newPos.x = 0;
+        newPos.x = -240;
         this.transform.position = newPos;
 
-        for (int i = 0; i < INPUT_COMMAND_NUM; i++) {
-            switch (inputButtonNameList[i])
+        for (int i = 0; i < 4; i++)
+        {
+            switch (BaseObjectSingleton<CommandController>.Instance.inputButtonNameList[i])
             {
                 case "A":
                     commandSprite = commandArray[0];
@@ -60,14 +59,33 @@ public class CreateCommand : CommandController {
             }
 
             // 生成
-            GameObject prefab = (GameObject)Instantiate(commandSprite, this.transform.position,Quaternion.identity);
-            prefab.transform.SetParent(canvas.transform, false);
+            prefab[i] = (GameObject)Instantiate(commandSprite, this.transform.position, Quaternion.identity);
+            prefab[i].transform.SetParent(canvas.transform, false);
 
             // 生成場所移動
             newPos = this.transform.position;
-            newPos.x += 25;
+            newPos.x += 158;
             this.transform.position = newPos;
+
+            BaseObjectSingleton<CommandController>.Instance.IsCreateCommandUI = false;
         }
+
     }
 
+    private void DeleteCommand(int _num)
+    {
+        Destroy(prefab[_num]);
+        BaseObjectSingleton<CommandController>.Instance.IsDeleteCommandUI = false;
+    }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (BaseObjectSingleton<CommandController>.Instance.IsCreateCommandUI)
+            NewCommand();
+
+        if (BaseObjectSingleton<CommandController>.Instance.IsDeleteCommandUI)
+            DeleteCommand(BaseObjectSingleton<CommandController>.Instance.ListNum);
+    }
 }

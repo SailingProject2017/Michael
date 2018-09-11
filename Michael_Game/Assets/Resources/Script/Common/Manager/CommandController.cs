@@ -2,31 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommandController : BaseObject
+public class CommandController : BaseObjectSingleton<CommandController>
 {
 
-    protected const int INPUT_COMMAND_NUM = 4; // 一度のフェーズで入力されるコマンドの上限
+    public const int INPUT_COMMAND_NUM = 4; // 一度のフェーズで入力されるコマンドの上限
 
-    protected List<int> commandList;
+    private List<int> commandList;
 
-    protected List<string> inputButtonNameList;
+    public List<string> inputButtonNameList;
 
-    protected string inputButtonName;
+    private string inputButtonName;
+    private bool isCreateCommandUI;
+    private bool isDeleteCommandUI;
+    private int listNum = 0;
 
-    private int listNum;
 
-    protected virtual void Start()
+    public string InputButtonName
     {
-        CommandInitialize();
+        set { inputButtonName = value; }
+        get { return inputButtonName; }
     }
 
-    protected virtual void CommandInitialize()
+    public bool IsCreateCommandUI
+    {
+        set { isCreateCommandUI = value; }
+        get { return isCreateCommandUI; }
+    }
+
+    public bool IsDeleteCommandUI
+    {
+        set { isDeleteCommandUI = value; }
+        get { return isDeleteCommandUI; }
+    }
+
+    public int ListNum
+    {
+        set { listNum = value; }
+        get { return listNum; }
+    }
+
+    private void Start()
     {
         commandList = new List<int>();
         inputButtonNameList = new List<string>();
 
+        CommandInitialize();
+    }
+
+     private void CommandInitialize()
+    {
+      
+        // アクセサーの初期化
         InputButtonName = "NULL";
-        listNum = 0;
+        IsCreateCommandUI = false;
+        IsDeleteCommandUI = false;
+        ListNum = 0;
 
         // リストのデータをクリア
         commandList.Clear();
@@ -67,29 +97,35 @@ public class CommandController : BaseObject
 
             }
         }
-    }
 
-    public string InputButtonName
-    {
-        set { inputButtonName = value; }
-        get { return inputButtonName; }
+        // UI作成用メソッドの呼び出しフラグを立てる
+        IsCreateCommandUI = true;
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
 
-        if(inputButtonName != "NULL")
+        if (inputButtonName != "NULL")
         {
-            if(inputButtonNameList[listNum] == InputButtonName)
+            if (inputButtonNameList[listNum] == InputButtonName)
             {
-                listNum++;
+                //IsDeleteCommandUI = true;
+                //ListNum++;
             }
+        }
+        // debug用
+        if (Input.GetKeyDown("a"))
+        {
+            IsDeleteCommandUI = true;
+            ListNum++;
         }
 
         // すべて入力が終わったら次のフェーズに移す
-        if (listNum == INPUT_COMMAND_NUM) CommandInitialize();
-
+        if (listNum == INPUT_COMMAND_NUM)
+        {
+            CommandInitialize();
+            ListNum = 0;
+        }
     }
-
 }

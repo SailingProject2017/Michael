@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InputButton : CommandController
+public class InputButton : BaseObject
 {
 
-
-
+    private string inputButtonName;
 
     public override void OnUpdate()
     {
@@ -24,8 +23,8 @@ public class InputButton : CommandController
         if (Input.GetButtonDown("Right")) inputButtonName = "Right";
         if (Input.GetButtonDown("Down")) inputButtonName = "Down";
 
-        // 入力されたボタンを親クラスに通知
-        base.InputButtonName = inputButtonName;
+        // 入力されたボタンを代入
+        BaseObjectSingleton<CommandController>.Instance.InputButtonName = inputButtonName;
     }
 
 }

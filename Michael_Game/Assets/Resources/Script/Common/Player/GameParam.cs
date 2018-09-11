@@ -12,6 +12,7 @@ public class GameParam {
     private bool isStartMy;
     private bool isStartYou;
 
+    private float totalTime;
 
     public int Depth
     {
@@ -35,5 +36,11 @@ public class GameParam {
     {
         set { isStartYou = value; }
         get { return isStartYou; }
+    }
+
+    public float TotalTime
+    {
+        set { totalTime = value; }
+        get { return totalTime; }
     }
 }
