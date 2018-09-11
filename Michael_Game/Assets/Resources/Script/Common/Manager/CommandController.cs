@@ -117,8 +117,10 @@ public class CommandController : BaseObjectSingleton<CommandController>
         // debug用
         if (Input.GetKeyDown("a"))
         {
+            Debug.Log(ListNum);
             IsDeleteCommandUI = true;
             ListNum++;
+            Debug.Log(ListNum);
         }
 
         // すべて入力が終わったら次のフェーズに移す

@@ -66,10 +66,8 @@ public class CreateCommand : BaseObject {
             newPos = this.transform.position;
             newPos.x += 158;
             this.transform.position = newPos;
-
-            BaseObjectSingleton<CommandController>.Instance.IsCreateCommandUI = false;
         }
-
+        BaseObjectSingleton<CommandController>.Instance.IsCreateCommandUI = false;
     }
 
     private void DeleteCommand(int _num)
