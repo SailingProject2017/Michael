@@ -123,21 +123,14 @@ public class CommandController : BaseObjectSingleton<CommandController>
 
         if (IsGame)
         {
-            if (inputButtonName != "NULL")
-            {
-                if (inputButtonNameList[listNum] == InputButtonName)
-                {
-                    //IsDeleteCommandUI = true;
-                    //ListNum++;
-                }
-            }
+           
             // debug用
-            if (Input.GetKeyDown("a"))
-            {
-                Debug.Log(ListNum);
-                IsDeleteCommandUI = true;
-                Debug.Log(ListNum);
-            }
+            //if (Input.GetKeyDown("a"))
+            //{
+            //    Debug.Log(ListNum);
+            //    IsDeleteCommandUI = true;
+            //    Debug.Log(ListNum);
+            //}
 
             // すべて入力が終わったら次のフェーズに移す
             if (listNum == INPUT_COMMAND_NUM)
@@ -146,6 +139,14 @@ public class CommandController : BaseObjectSingleton<CommandController>
                 IsMove = true;
                 CommandInitialize();
                 ListNum = 0;
+            }
+
+            if (inputButtonName != "NULL")
+            {
+                if (inputButtonNameList[ListNum] == InputButtonName)
+                {
+                    IsDeleteCommandUI = true;
+                }
             }
         }
     }

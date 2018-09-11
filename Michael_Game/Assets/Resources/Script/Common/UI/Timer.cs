@@ -27,7 +27,7 @@ public class Timer : BaseObject {
     }
  
     void Update () {
-        if (!GameInstance.Instance.IsPlayGame) return;
+        if (!CommandController.Instance.IsGame) return;
 
         //　制限時間が0秒以下なら何もしない
         if (totalTime <= 0f) {

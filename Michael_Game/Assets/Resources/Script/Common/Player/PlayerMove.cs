@@ -41,7 +41,7 @@ public class PlayerMove : BaseObject
                 spriteRenderer.sprite = sprite[0];   
             }
 
-            Singleton<GameParam>.instance.Depth += 1;
+            Singleton<GameParam>.instance.Depth += 8;
             BaseObjectSingleton<CommandController>.Instance.IsMove = false;
         }
     }
