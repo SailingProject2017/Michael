@@ -82,8 +82,14 @@ public class PhotonManager : Photon.MonoBehaviour
 
         Singleton<GameParam>.instance.IsStartMy = true;
 
-        SceneManager.LoadScene("DualPlay");
-    }
 
+    }
+    private void Update()
+    {
+        if (PhotonNetwork.playerList.Length == 2)
+        {
+            SceneManager.LoadScene("DualPlay");
+        }
+    }
 
 }

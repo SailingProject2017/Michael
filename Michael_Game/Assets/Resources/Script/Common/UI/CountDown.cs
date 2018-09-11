@@ -13,11 +13,13 @@ public class CountDown : BaseObject
 
     string currentScene;
 
+    bool callOne;
+
     void Start()
     {
         _textCountdown.text = "";
         currentScene = SceneManager.GetActiveScene().name;
-
+        callOne = false;
 
         if (currentScene == "SinglePlay")
         {
@@ -30,9 +32,10 @@ public class CountDown : BaseObject
         base.OnUpdate();
         if (currentScene == "DualPlay")
         {
-            if (Singleton<GameParam>.instance.IsStartMy == true && Singleton<GameParam>.instance.IsStartYou == true)
+            if (Singleton<GameParam>.instance.IsStartMy == true && Singleton<GameParam>.instance.IsStartYou == true && !callOne) 
             {
                 StartCoroutine(CountdownCoroutine()); // ゲーム開始時コルーチン開始
+                callOne = true;
             }
         }
     }
