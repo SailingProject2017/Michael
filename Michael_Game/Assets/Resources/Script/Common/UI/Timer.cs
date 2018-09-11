@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+ using UnityEngine.SceneManagement;
 
 public class Timer : BaseObject {
  
@@ -18,16 +18,14 @@ public class Timer : BaseObject {
     private Text timerText;
  
     void Start () {
-        if (PhotonNetwork.isMasterClient)
-            totalTime = minute * 60 + seconds;
-        else
-            totalTime = Singleton<GameParam>.instance.TotalTime;
-        
+        totalTime = minute * 60 + seconds;
         oldSeconds = 0f;
         timerText = GetComponentInChildren<Text>();
     }
  
     void Update () {
+        if (!GameInstance.Instance.IsPlayGame) return;
+
         //　制限時間が0秒以下なら何もしない
         if (totalTime <= 0f) {
             return;
