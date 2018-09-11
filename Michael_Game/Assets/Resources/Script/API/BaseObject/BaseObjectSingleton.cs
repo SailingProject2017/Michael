@@ -11,8 +11,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class BaseObjectSingleton<T> : BaseObject where T : BaseObjectSingleton<T> {
-    
+public class BaseObjectSingleton<T> : BaseObject where T : BaseObjectSingleton<T>
+{
+
     private static T instance;
 
     /// <summary>
@@ -28,16 +29,16 @@ public class BaseObjectSingleton<T> : BaseObject where T : BaseObjectSingleton<T
         base.AppendListConstructor();
         if (CheckInstance() == true)
         {
-            RemoveObjectToList(this);
-            AppendManagerObjectToList(this);
+            //RemoveObjectToList(this);
+            //AppendManagerObjectToList(this);
         }
     }
 
 
-   /// <summary>
-   /// @brief インスタンスがあるかどうか確認
-   /// </summary>
-   /// <returns> true or false </returns>
+    /// <summary>
+    /// @brief インスタンスがあるかどうか確認
+    /// </summary>
+    /// <returns> true or false </returns>
     protected bool CheckInstance()
     {
         if (instance == null)
@@ -54,4 +55,3 @@ public class BaseObjectSingleton<T> : BaseObject where T : BaseObjectSingleton<T
         return false;
     }
 }
-

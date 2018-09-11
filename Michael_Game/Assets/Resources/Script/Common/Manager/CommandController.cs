@@ -14,7 +14,10 @@ public class CommandController : BaseObjectSingleton<CommandController>
     private string inputButtonName;
     private bool isCreateCommandUI;
     private bool isDeleteCommandUI;
+    private bool isMove = false;
+    private bool isGame = false;
     private int listNum = 0;
+
 
 
     public string InputButtonName
@@ -35,6 +38,18 @@ public class CommandController : BaseObjectSingleton<CommandController>
         get { return isDeleteCommandUI; }
     }
 
+    public bool IsMove
+    {
+        set { isMove = value; }
+        get { return isMove; }
+    }
+
+    public bool IsGame
+    {
+        set { isGame = value; }
+        get { return isGame; }
+    }
+
     public int ListNum
     {
         set { listNum = value; }
@@ -49,9 +64,9 @@ public class CommandController : BaseObjectSingleton<CommandController>
         CommandInitialize();
     }
 
-     private void CommandInitialize()
+    private void CommandInitialize()
     {
-      
+
         // アクセサーの初期化
         InputButtonName = "NULL";
         IsCreateCommandUI = false;
@@ -106,28 +121,32 @@ public class CommandController : BaseObjectSingleton<CommandController>
     {
         base.OnUpdate();
 
-        if (inputButtonName != "NULL")
+        if (IsGame)
         {
-            if (inputButtonNameList[listNum] == InputButtonName)
+            if (inputButtonName != "NULL")
             {
-                //IsDeleteCommandUI = true;
-                //ListNum++;
+                if (inputButtonNameList[listNum] == InputButtonName)
+                {
+                    //IsDeleteCommandUI = true;
+                    //ListNum++;
+                }
             }
-        }
-        // debug用
-        if (Input.GetKeyDown("a"))
-        {
-            Debug.Log(ListNum);
-            IsDeleteCommandUI = true;
-            ListNum++;
-            Debug.Log(ListNum);
-        }
+            // debug用
+            if (Input.GetKeyDown("a"))
+            {
+                Debug.Log(ListNum);
+                IsDeleteCommandUI = true;
+                Debug.Log(ListNum);
+            }
 
-        // すべて入力が終わったら次のフェーズに移す
-        if (listNum == INPUT_COMMAND_NUM)
-        {
-            CommandInitialize();
-            ListNum = 0;
+            // すべて入力が終わったら次のフェーズに移す
+            if (listNum == INPUT_COMMAND_NUM)
+            {
+                // 動く！
+                IsMove = true;
+                CommandInitialize();
+                ListNum = 0;
+            }
         }
     }
 }

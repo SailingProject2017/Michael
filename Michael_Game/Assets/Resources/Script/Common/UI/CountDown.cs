@@ -20,7 +20,7 @@ public class CountDown : BaseObject
         _textCountdown.text = "";
         currentScene = SceneManager.GetActiveScene().name;
         callOne = false;
-
+        BaseObjectSingleton<CommandController>.Instance.IsGame = false;
         if (currentScene == "SinglePlay")
         {
             StartCoroutine(CountdownCoroutine()); // ゲーム開始時コルーチン開始
@@ -59,12 +59,13 @@ public class CountDown : BaseObject
 
         _textCountdown.text = "1";
         yield return new WaitForSeconds(1.0f);      //1秒のインターバルがある
-
+        BaseObjectSingleton<CommandController>.Instance.IsGame = true;
         _textCountdown.text = "GO!";
         yield return new WaitForSeconds(1.0f);      //1秒のインターバルがある
-        BaseObjectSingleton<GameInstance>.Instance.IsPlayGame = true;
+        
         _textCountdown.text = "";
         _textCountdown.gameObject.SetActive(false);
+
       
     }
 }
