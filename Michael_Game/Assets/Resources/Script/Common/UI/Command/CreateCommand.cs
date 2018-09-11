@@ -74,6 +74,7 @@ public class CreateCommand : BaseObject {
     {
         Destroy(prefab[_num]);
         BaseObjectSingleton<CommandController>.Instance.IsDeleteCommandUI = false;
+        BaseObjectSingleton<CommandController>.Instance.ListNum++;
     }
 
     public override void OnUpdate()
